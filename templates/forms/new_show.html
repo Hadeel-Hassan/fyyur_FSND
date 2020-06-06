@@ -1,0 +1,49 @@
+{% extends 'layouts/main.html' %}
+{% block title %}New Show Listing{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form method="post" class="form" novalidate>
+      <h3 class="form-heading">List a new show</h3>
+      <h6 class="required-txt">* Required Fields</h6>
+      <div class="form-group">
+        <label for="artist_id">Artist ID</label>
+        <span style="color: red;">*</span>
+        <small>ID can be found on the Artist's Page</small>
+        <span style="display: inline-block;">
+          <ul style="display: inline-block;">
+            {% for error in form.artist_id.errors %}
+            <li style="color: red;list-style: none;font-size: x-small;">{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </span>
+        {{ form.artist_id(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="venue_id">Venue ID</label>
+        <span style="color: red;">*</span>
+        <small>ID can be found on the Venue's Page</small>
+        <span style="display: inline-block;">
+          <ul style="display: inline-block;">
+            {% for error in form.venue_id.errors %}
+            <li style="color: red;list-style: none;font-size: x-small;">{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </span>
+        {{ form.venue_id(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+          <label for="start_time">Start Time</label>
+          <span style="color: red;">*</span>
+          <span style="display: inline-block;">
+            <ul style="display: inline-block;">
+              {% for error in form.start_time.errors %}
+              <li style="color: red;list-style: none;font-size: x-small;">{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </span>
+          {{ form.start_time(class_ = 'form-control', placeholder='YYYY-MM-DD HH:MM', autofocus = true) }}
+        </div>
+      <input type="submit" value="Create Venue" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+{% endblock %}
